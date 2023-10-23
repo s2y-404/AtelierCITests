@@ -17,6 +17,19 @@
         }
 
         [TestMethod]
+        public void CalculerRemise_InvalidePourcentage_RetourneMontantCorrect()
+        {
+            // Arrange
+            var produit = new Produit { Nom = "TestProduit", Prix = 100 };
+
+            // Act
+            var remise = produit.CalculerRemise(10);  // 10% de remise
+
+            // Assert
+            Assert.AreEqual(100, remise);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CalculerRemise_InvalidePourcentage_ThrowsException()
         {
